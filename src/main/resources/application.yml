@@ -1,0 +1,51 @@
+server:
+  port: 80
+spring:
+  application:
+    name: reggie_take_out #应用名称，可选
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username:
+      password:
+  main:
+    banner-mode: off #去掉spring控制台图标
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    password:
+    database: 0 #使用0号服务器，redis默认启动16个服务器
+    jedis: #redis数据连接池
+      pool:
+        max-active: 8 #最大连接数量
+        max-wait: 1ms #最大等待时间
+        max-idle: 4 #最大空闲连接
+        min-idle: 0 #最小空闲连接
+
+
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: ASSIGN_ID #id自动增加
+
+reggie: #图片存放位置
+  base-file-path: F:\reggie\src\main\resources\backend\images\dish\
+
+
+mail:
+  HostName: 
+  UserName: 
+  PassWord: 
+  From: 
+#  Name:
+#  SmtpPort: 
+#  SocketTimeout: 25000
+#  SSLOnConnect: false
+#  StartTLSEnabled: true
