@@ -54,9 +54,10 @@ public class Dish implements Serializable {
   //顺序
   private Integer sort;
 
+  //为了避免 Could not write JSON: Invalid type definition for type `java.time.LocalDateTime`:redis序列化出错
   @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+  @JsonSerialize(using = LocalDateTimeSerializer.class)
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-//为了避免 Could not write JSON: Invalid type definition for type `java.time.LocalDateTime`:redis序列化出错
   @TableField(fill = FieldFill.INSERT)
   private LocalDateTime createTime;
 
